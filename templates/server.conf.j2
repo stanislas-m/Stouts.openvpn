@@ -66,7 +66,7 @@ client-config-dir {{ openvpn_client_config_dir }}
 topology {{ openvpn_topology }}
 {% endif %}
 
-{% if openvpn_server and not openvpn_bridge %}
+{% if openvpn_server and openvpn_bridge is not defined %}
 # Configure server mode and supply a VPN subnet for OpenVPN to draw client
 # addresses from. The server will take 10.8.0.1 for itself, the rest will be
 # made available to clients. Each client will be able to reach the server on
@@ -74,7 +74,7 @@ topology {{ openvpn_topology }}
 # page for more info.
 server {{ openvpn_server }}
 {% endif %}
-{% if openvpn_bridge %}
+{% if openvpn_bridge is defined %}
 # Configure server mode for ethernet bridging.
 # You must first use your OS's bridging capability
 # to bridge the TAP interface with the ethernet

@@ -43,4 +43,4 @@
 - name: Install bridge dependencies
   apt:
     name: bridge-utils
-  when: openvpn_bridge | bool
+  when: openvpn_bridge is defined
